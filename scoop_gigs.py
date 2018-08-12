@@ -19,5 +19,5 @@ for a in soup.find_all('a', href=True):
 			print(total, " : ", a['href'])
 			#seearchUSOnly
 			if total < 420:
-				scoop.findGigs(a['href'],'"build%2Bwebsite"%2B|%2B"build%2Bandroid"%2B|%2B"develop"%2B|%2B"wordpress"%2B|%2B"reactjs"%2B|%2B"react%2Bnative"+%2B+-uber+%2B+-lyft+-mover+-assistant+-writer+-coach+-landscape+-telemarket+-sales+-cleaner+-model+-marketing&is_paid=all')
+				scoop.findGigs(a['href'],'"build%2Bwebsite"%2B|%2B"build%2Bandroid"%2B|%2B"develop"%2B|%2B"wordpress"%2B|%2B"reactjs"%2B|%2B"react%2Bnative"+%2B+-uber+%2B+-lyft+-mover+-assistant+-coach+-landscape+-sales+-cleaner+-model+-marketing&is_paid=all')
 			total = total + 1
