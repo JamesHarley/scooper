@@ -9,13 +9,13 @@ def findRemote(scoop_page, queryo):
     # specify the url
     # scoop_page = scoop_page = "https://rochester.craigslist.org/search/jjj?query=remote+-'not+remote'"
     if "http://miami.craigslist.org/brw" in scoop_page:
-        scoop_page = "https://miami.craigslist.org/search/brw/jjj?query="+queryo
+        scoop_page = "https://miami.craigslist.org/search/brw/jjj?query="+queryo+"&postedToday=1"
     elif "http://miami.craigslist.org/mdc" in scoop_page:
-        scoop_page = "https://miami.craigslist.org/search/mdc/jjj?query="+queryo
+        scoop_page = "https://miami.craigslist.org/search/mdc/jjj?query="+queryo+"&postedToday=1"
     elif "http://miami.craigslist.org/pbc" in scoop_page:
-        scoop_page = "https://miami.craigslist.org/search/pbc/jjj?query="+queryo
+        scoop_page = "https://miami.craigslist.org/search/pbc/jjj?query="+queryo+"&postedToday=1"
     else:
-        scoop_page = scoop_page + "search/jjj?query="+queryo
+        scoop_page = scoop_page + "search/jjj?query="+queryo+"&postedToday=1"
     print("Scoop URL" ,scoop_page)
     # query the website and return the html to the variable ‘page’
     page = urllib.request.urlopen(scoop_page)
@@ -39,13 +39,13 @@ def findRemote(scoop_page, queryo):
 def findGigs(scoop_page, queryo):
 	# specify the url
 	if "http://miami.craigslist.org/brw" in scoop_page:
-		scoop_page = "https://miami.craigslist.org/search/ggg?query="+queryo
+		scoop_page = "https://miami.craigslist.org/search/ggg?query="+queryo+"&postedToday=1"
 	elif "http://miami.craigslist.org/mdc" in scoop_page:
-		scoop_page = "https://miami.craigslist.org/search/ggg?query="+queryo
+		scoop_page = "https://miami.craigslist.org/search/ggg?query="+queryo+"&postedToday=1"
 	elif "http://miami.craigslist.org/pbc" in scoop_page:
-		scoop_page = "https://miami.craigslist.org/search/ggg?query="+queryo
+		scoop_page = "https://miami.craigslist.org/search/ggg?query="+queryo+"&postedToday=1"
 	else:
-		scoop_page = scoop_page + "search/ggg?query="+queryo
+		scoop_page = scoop_page + "search/ggg?query="+queryo+"&postedToday=1"
 	print("Scoop URL" ,scoop_page)
 	# query the website and return the html to the variable ‘page’
 	page = urllib.request.urlopen(scoop_page)
