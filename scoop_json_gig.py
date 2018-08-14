@@ -19,5 +19,5 @@ with open('gig_results.csv') as f:
 		})
 			
 	print(data)
-	with open('../gig_results.json', 'w') as outfile:  
+	with open('gig_results.json', 'w') as outfile:  
 		json.dump(data, outfile, indent=4)

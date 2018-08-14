@@ -19,5 +19,5 @@ with open('remote_results.csv') as f:
 		})
 			
 	print(data)
-	with open('../remote_results.json', 'w') as outfile:  
+	with open('remote_results.json', 'w') as outfile:  
 		json.dump(data, outfile, indent=4)
