@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import csv
 from datetime import datetime
 import io
+import json
 
 def findRemote(scoop_page, queryo):
 	# specify the url
@@ -15,7 +16,7 @@ def findRemote(scoop_page, queryo):
 	elif "http://miami.craigslist.org/pbc" in scoop_page:
 		scoop_page = "https://miami.craigslist.org/search/pbc/jjj?query="+queryo+"&postedToday=1&bundleDuplicates=1"
 	else:
-		scoop_page = scoop_page + "search/jjj?query="+queryo+"&bundleDuplicates=1"
+		scoop_page = scoop_page + "search/jjj?query="+queryo+"&postedToday=1&&bundleDuplicates=1"
 	print("Scoop URL" ,scoop_page)
 	# query the website and return the html to the variable ‘page’
 	page = urllib.request.urlopen(scoop_page)
@@ -37,7 +38,7 @@ def findRemote(scoop_page, queryo):
 				reader = csv.reader(f)
 				duplicate = False
 				for row in reader:
-					if  title_box['href'] in row:
+					if  title_box['href'],title in row:
 						print ("###############DUPLICATE FOUND################")
 						duplicate = True
 				#end check
@@ -77,7 +78,7 @@ def findGigs(scoop_page, queryo):
 				reader = csv.reader(f)
 				duplicate = False
 				for row in reader:
-					if  title_box['href'] in row:
+					if  title_box['href'],title in row:
 						print ("###############DUPLICATE FOUND################")
 						duplicate = True
 				#end check

@@ -1,5 +1,23 @@
-import pandas as pd
+import csv
+import json
 
-#def scoopJSON(csvPath,jsonPath):
-csv_file = pd.DataFrame(pd.read_csv('remote_results.csv', sep = ",", header = 0, index_col = False))
-csv_file.to_json('remote_results.json', orient = "table", date_format = "iso")
+data = {}
+data = {}  
+data['remote'] = []  
+
+with open('remote_results.csv') as f:
+	reader = csv.reader(f, delimiter=',')
+	#csv rows
+	for row in reader:
+		if(not row): 
+			continue
+		print(row[0])
+		data['remote'].append({  
+			'title': row[0],
+			'link': row[1],
+			'date':  row[2]
+		})
+			
+	print(data)
+	with open('remote_results.json', 'w') as outfile:  
+		json.dump(data, outfile, indent=4)
