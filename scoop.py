@@ -38,7 +38,8 @@ def findRemote(scoop_page, queryo):
 				reader = csv.reader(f)
 				duplicate = False
 				for row in reader:
-					if  title_box['href'],title in row:
+					check =  (title_box['href'],title)
+					if  any (s in row for s in check):
 						print ("###############DUPLICATE FOUND################")
 						duplicate = True
 				#end check
@@ -78,7 +79,8 @@ def findGigs(scoop_page, queryo):
 				reader = csv.reader(f)
 				duplicate = False
 				for row in reader:
-					if  title_box['href'],title in row:
+					check =  (title_box['href'],title)
+					if  any (s in row for s in check):
 						print ("###############DUPLICATE FOUND################")
 						duplicate = True
 				#end check
