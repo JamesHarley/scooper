@@ -16,7 +16,7 @@ for a in soup.find_all('a', href=True):
 		count = count + 1
 	else:
 		if total < 714:
-			print(total, " : ", a['href'])
+			#print(total, " : ", a['href'])
 			#seearchUSOnly
 			if total < 420:
 				scoop.findRemote(a['href'],"remote+-not+remote+java+|+javascript+|+web+developer++|+android+developer+|++programmer+|+wordpress+|+developer")

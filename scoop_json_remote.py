@@ -1,7 +1,6 @@
 import csv
 import json
 
-data = {}
 data = {}  
 data['remote'] = []  
 
@@ -11,7 +10,7 @@ with open('remote_results.csv') as f:
 	for row in reader:
 		if(not row): 
 			continue
-		print(row[0])
+		#print(row[0])
 		data['remote'].append({  
 			'title': row[0],
 			'link': row[1],
@@ -19,5 +18,5 @@ with open('remote_results.csv') as f:
 		})
 			
 	print(data)
-	with open('../remote_results.json', 'w') as outfile:  
+	with open('../json/remote_results.json', 'w') as outfile:  
 		json.dump(data, outfile, indent=4)

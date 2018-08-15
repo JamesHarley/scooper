@@ -6,6 +6,26 @@ from datetime import datetime
 import io
 import json
 
+def cleanup():
+	with open('remote_results.csv') as f:
+		reader = csv.reader(f)
+		delete = False
+		for row in reader:
+			check  = (datetime.now() - datetime.strptime(row[2], '%Y-%m-%d %H:%M:%S.%f'))
+			if   check.days > 1:
+				print ("###############DELETED OLD RESULTS################")
+				delete = True
+		#print('fin')	
+	with open('gig_results.csv') as f:
+		reader = csv.reader(f)
+		delete = False
+		for row in reader:
+			check  = (datetime.now() - datetime.strptime(row[2], '%Y-%m-%d %H:%M:%S.%f'))
+			if   check.days > 1:
+				print ("###############DELETED OLD RESULTS################")
+				delete = True
+		#print('and Jake')
+
 def findRemote(scoop_page, queryo):
 	# specify the url
 	# scoop_page = scoop_page = "https://rochester.craigslist.org/search/jjj?query=remote+-'not+remote'"
@@ -17,7 +37,7 @@ def findRemote(scoop_page, queryo):
 		scoop_page = "https://miami.craigslist.org/search/pbc/jjj?query="+queryo+"&postedToday=1&bundleDuplicates=1"
 	else:
 		scoop_page = scoop_page + "search/jjj?query="+queryo+"&postedToday=1&&bundleDuplicates=1"
-	print("Scoop URL" ,scoop_page)
+	#print("Scoop URL" ,scoop_page)
 	# query the website and return the html to the variable ‘page’
 	page = urllib.request.urlopen(scoop_page)
 
@@ -40,12 +60,13 @@ def findRemote(scoop_page, queryo):
 				for row in reader:
 					check =  (title_box['href'],title)
 					if  any (s in row for s in check):
-						print ("###############DUPLICATE FOUND################")
+						#print ("###############DUPLICATE FOUND################")
 						duplicate = True
 				#end check
-			print("Count: ", count, "Title", title, "Link: ", title_box['href'])
+			#print("Count: ", count, "Title", title, "Link: ", title_box['href'])
 			count = count + 1
 			if duplicate == False:
+				print (datetime.now() + " ###FOUND ### -"+[title, title_box['href'], datetime.now()] )
 				writer.writerow([title, title_box['href'], datetime.now()])
 				
 
@@ -59,7 +80,7 @@ def findGigs(scoop_page, queryo):
 		scoop_page = "https://miami.craigslist.org/search/ggg?query="+queryo+"&postedToday=1&bundleDuplicates=1"
 	else:
 		scoop_page = scoop_page + "search/ggg?query="+queryo+"&postedToday=1&bundleDuplicates=1"
-	print("Scoop URL" ,scoop_page)
+	#print("Scoop URL" ,scoop_page)
 	# query the website and return the html to the variable ‘page’
 	page = urllib.request.urlopen(scoop_page)
 
@@ -81,10 +102,11 @@ def findGigs(scoop_page, queryo):
 				for row in reader:
 					check =  (title_box['href'],title)
 					if  any (s in row for s in check):
-						print ("###############DUPLICATE FOUND################")
+						#print ("###############DUPLICATE FOUND################")
 						duplicate = True
 				#end check
-			print("Count: ", count, "Title", title, "Link: ", title_box['href'])
+			#print("Count: ", count, "Title", title, "Link: ", title_box['href'])
 			count = count + 1
 			if duplicate == False:
+				print ("############### FOUND ### -"+[title, title_box['href'], datetime.now()] )
 				writer.writerow([title, title_box['href'], datetime.now()])
