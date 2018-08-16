@@ -66,7 +66,7 @@ def findRemote(scoop_page, queryo):
 			#print("Count: ", count, "Title", title, "Link: ", title_box['href'])
 			count = count + 1
 			if duplicate == False:
-				print ("############### FOUND ### -")
+				print ("############### FOUND Remote ### -")
 				print("Count: ", count, "Title", title, "Link: ", title_box['href'])
 				writer.writerow([title, title_box['href'], datetime.now()])
 				
@@ -109,6 +109,6 @@ def findGigs(scoop_page, queryo):
 			#print("Count: ", count, "Title", title, "Link: ", title_box['href'])
 			count = count + 1
 			if duplicate == False:
-				print ("############### FOUND ### -")
+				print ("############### FOUND Gig ### -")
 				print("Count: ", count, "Title", title, "Link: ", title_box['href'])
 				writer.writerow([title, title_box['href'], datetime.now()])

@@ -22,4 +22,3 @@ for a in soup.find_all('a', href=True):
 			#if total < 420:
 			scoop.findRemote(a['href'],"remote+-not+remote+java+|+javascript+|+web+developer++|+android+developer+|++programmer+|+wordpress+|+developer")
 			total = total + 1
-			sleep(5)
